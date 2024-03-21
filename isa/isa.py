@@ -117,3 +117,4 @@ if __name__ == "__main__":
     main() 
 
 # se ci sono istruzioni qui, vengono comunque eseguiti, quindi scrivo il main in fondo
+#commento inutile
