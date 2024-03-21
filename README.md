@@ -1,7 +1,7 @@
 # ISA instestazione
 
 -- Descrizione testiuale di cosa fa la mia applicazione --
-Date due liste di interi calcola diverse metriche:
+Date due liste di interi calcola diverse metriche di errore:
 - MAE (mean absolute error)
 - MSE (mean square error)
 
