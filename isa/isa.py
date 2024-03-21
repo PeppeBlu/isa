@@ -94,11 +94,11 @@ def main():
     arguments = parser.parse_args()
     logging.debug(arguments.predicted)
 
-    #print(arguments.predicted)
+    
     logging.debug(arguments.predicted)
-    #print(arguments.expected)
+    
     logging.debug(arguments.expected)
-    #print(arguments.metrics)
+    
     logging.debug(arguments.metrics)
     
 
