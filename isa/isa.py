@@ -104,8 +104,8 @@ def main():
     solver = Operation(arguments.predicted, arguments.expected, arguments.metrics)
 
     result = solver.compute_metrics()
-
-    print(result)
+    print(f"Result: {result}")
+    #print(result)
 
 
 if __name__ == "__main__":
