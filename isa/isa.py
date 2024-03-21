@@ -58,6 +58,10 @@ class Operation():
 
 
 def main():
+
+    """
+    Main Function
+    """
     # 1) interpretazione argomenti da linea di comando
     """ Main function"""
     parser = argparse.ArgumentParser(
