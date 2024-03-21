@@ -55,7 +55,8 @@ class Operation():
             return self._mse()
         else:
             return -1
-#per simulare il main
+
+
 def main():
     # 1) interpretazione argomenti da linea di comando
     """ Main function"""
