@@ -21,8 +21,8 @@ class Operation():
         # controllo lunghezza liste
         if not self._is_consistent():
             #print("Predicted and expected should have same length")
-            logging.critical(print("Predicted and expected should have same length"))
-
+            #logging.critical(print("Predicted and expected should have same length"))
+            raise ValueError("Predicted and expected should have same length")
             sys.exit()
 
     # con underscore davanti perchè è un metodo "interno", da non esporre all'ulizz
