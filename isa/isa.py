@@ -23,7 +23,7 @@ class Operation():
             #print("Predicted and expected should have same length")
             #logging.critical(print("Predicted and expected should have same length"))
             raise ValueError("Predicted and expected should have same length")
-            sys.exit()
+            #sys.exit()
 
     # con underscore davanti perchè è un metodo "interno", da non esporre all'ulizz
     def _is_consistent(self) -> bool:
@@ -38,7 +38,9 @@ class Operation():
         return result/len(self.predicted)
 
     def _mse(self) -> float:
-        # questa è una funzione che calcola la metrica MSE
+        """
+        Computes Mean Square Error
+        """
         result: float = 0
         for i in range(0, len(self.predicted)):
             result += (self.predicted[i] - self.expected[i])**2
