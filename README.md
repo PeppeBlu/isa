@@ -6,6 +6,7 @@ Date due liste di interi calcola diverse metriche di errore:
 - MSE (mean square error)
 
 
+
 ### Esempio:
 ```
 predicted = [1,2,3]

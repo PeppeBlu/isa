@@ -1,6 +1,7 @@
 import argparse
 import sys
 import logging
+import math
 
 # creo classe che gestisce il calcolo delle metriche
 class Operation():
@@ -33,9 +34,15 @@ class Operation():
     def _mae(self) -> float:
         """Calculate che MAE metric"""
         result: float = 0
-        for i in range(0, len(self.predicted)):
-            result += abs(self.predicted[i] - self.expected[i])
+        
+        for p, e in zip(self.predicted, self.expected):
+            result += abs(p -e)
         return result/len(self.predicted)
+
+        #fn = lambda p, e: abs(p - e)
+        #sum (list (map (fn, zip(self.predicted, self.expected))/len(self.predicted)))    
+
+    
 
     def _mse(self) -> float:
         """
@@ -46,6 +53,13 @@ class Operation():
             result += (self.predicted[i] - self.expected[i])**2
         return result/len(self.predicted)
 
+
+    def _rmse(self) -> float:
+        '''
+        Computes the root means squared error
+        '''
+        return math.sqrt(self._mse())
+    
     
     # in base alla metrica selezionata ho la funzione che calcola la metrica
     #senza underscore perchè è esposta all'utilizzatore
@@ -55,17 +69,13 @@ class Operation():
             return self._mae()
         elif self.metrics == "MSE":
             return self._mse()
+        elif self.metrics == "RMSE":
+            return self._rmse()
         else:
             return -1
 
 
-def main():
-
-    """
-    Main Function
-    """
-    # 1) interpretazione argomenti da linea di comando
-    """ Main function"""
+def setup_parser() -> argparse.Namespace:
     parser = argparse.ArgumentParser(
         #uso prog perchè
         prog="ISA",
@@ -95,11 +105,24 @@ def main():
         choices=["MAE", "MSE"]
     )
 
+    return parser.parse_args()
+
+
+
+
+
+def main(arguments) -> float:
+
+    """
+    Main Function
+    """
+    # 1) interpretazione argomenti da linea di comando
+    """ Main function"""
+    
     logging.basicConfig(level=logging.WARNING)
 
-    arguments = parser.parse_args()
+    #arguments = parser.parse_args()
     logging.debug(arguments.predicted)
-
     
     logging.debug(arguments.predicted)
     
@@ -112,11 +135,14 @@ def main():
 
     result = solver.compute_metrics()
     print(f"Result: {result}")
-    #print(result)
+
+    return result
 
 
 if __name__ == "__main__":
-    main() 
+    result = main(setup_parser())
+    #stampo il risultato
+    print(f"Result: ", result)
 
 # se ci sono istruzioni qui, vengono comunque eseguiti, quindi scrivo il main in fondo
 #commento inutile
