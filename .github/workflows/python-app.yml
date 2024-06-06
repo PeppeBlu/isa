@@ -43,7 +43,7 @@ jobs:
         
 
     - name: Docker Login
-      uses: pypa/login-action@v3
+      uses: docker/login-action@v3
       with: 
         username: peppeblu
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
