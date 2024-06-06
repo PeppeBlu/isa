@@ -50,7 +50,7 @@ jobs:
       
 
     - name: Docker Build and Push
-      uses: docker/build-pushaction@v5
+      uses: docker/build-push-action@v25
       with:
         context: .
         file: ./Dockerfile
