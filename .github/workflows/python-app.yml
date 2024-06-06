@@ -52,6 +52,7 @@ jobs:
     - name: Docker Build and Push
       uses: docker/build-pushaction@v5
       with:
+        context: .
         file: ./Dockerfile
         push: true
         tags: peppeblu/isa:latest
