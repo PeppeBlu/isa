@@ -28,10 +28,31 @@ jobs:
         python -m pip install --upgrade pip
         python -m pip install pylint pytest hypothesis
         python -m pip install .
-        
+
+
     - name: Lint with pylint
       run: |
         pylint isa/isa.py --exit-zero
     - name: Test with pytest
       run: |
         pytest
+
+    - name: Building app
+      run: |
+        python -m build
+        
+
+    - name: Docker Login
+      uses: pypa/login-action@v3
+      with: 
+        username: peppeblu
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+      
+
+    - name: Docker Build and Push
+      uses: docker/build-pushaction@v5
+      with:
+        file: ./Dockerfile
+        push: true
+        tags: peppeblu/isa:latest
+      
