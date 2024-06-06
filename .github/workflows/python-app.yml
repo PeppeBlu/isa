@@ -39,7 +39,7 @@ jobs:
 
     - name: Building app
       run: |
-        python -m build
+        python -m isa/build
         
 
     - name: Docker Login
